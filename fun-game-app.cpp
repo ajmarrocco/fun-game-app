@@ -7,19 +7,20 @@
 using namespace std;
 
 void play_game(){
-    // random number between 1 and 250
-    int random = rand() % 251;
-    cout << random << endl;
+    // random number between 1 and 10
+    int random = rand() % 11;
+    // cout << random << endl;
     cout << "Guess a number: ";
     while(true){
         int guess;
         cin >> guess;
         if(guess == random){
-            cout << "You win!";
+            cout << "You win!" << endl;
+            break;
         } else if (guess < random){
-            cout << "Too low";
+            cout << "Too low" << endl;
         } else {
-            cout << "Too high";
+            cout << "Too high" << endl;
         }
     }
 }
