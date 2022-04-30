@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <fstream>
 
 // uses namespace std
 using namespace std;
@@ -17,6 +18,8 @@ void print_vector(vector<int> vector){
 void play_game(){
     // creates array for guesses
     vector <int> guesses;
+
+    int count = 0;
     // random number between 1 and 10
     int random = rand() % 11;
     // cout << random << endl;
@@ -24,6 +27,7 @@ void play_game(){
     while(true){
         int guess;
         cin >> guess;
+        count++;
         // adds value of guess to the array guesses
         guesses.push_back(guess);
 
@@ -37,6 +41,31 @@ void play_game(){
         }
         
     }
+    // reads from best_score.txt
+    ifstream input("best_score.txt");
+    // checks if file opens
+    if(!input.is_open()){
+        cout << "Unable to read file\n";
+        return;
+    }
+    // sets variable and makes input number from best_score.txt
+    int best_score;
+    input >> best_score;
+    // write to best_score.txt
+    ofstream output("best_score.txt");
+    // checks if file opens
+    if(!output.is_open()){
+        cout << "Unable to read file\n";
+        return;
+    }
+    if(count < best_score){
+        // output count to the best_score.txt
+        output << count;
+    } else{
+        // output best_score to the best_score.txt (which is the same as before)
+        output << best_score;
+    }
+
     print_vector(guesses);
 }
 
