@@ -4,6 +4,10 @@
 // uses namespace std
 using namespace std;
 
+void play_game(){
+    cout << "Game is being played!" << endl;
+}
+
 int main() {
     int choice;
 
@@ -18,10 +22,10 @@ int main() {
                     cout << "You chose to quit!\n";
                     break;
                 case 1:
-                    cout << "You chose to play game!\n";
+                    play_game();
                     break;
                 default:
-                break;
+                    break;
             }
     } while(choice != 0);
 }
