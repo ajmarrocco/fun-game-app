@@ -8,6 +8,33 @@
 // uses namespace std
 using namespace std;
 
+void save_score(int count){
+    // reads from best_score.txt
+    ifstream input("best_score.txt");
+    // checks if file opens
+    if(!input.is_open()){
+        cout << "Unable to read file\n";
+        return;
+    }
+    // sets variable and makes input number from best_score.txt
+    int best_score;
+    input >> best_score;
+    // write to best_score.txt
+    ofstream output("best_score.txt");
+    // checks if file opens
+    if(!output.is_open()){
+        cout << "Unable to read file\n";
+        return;
+    }
+    if(count < best_score){
+        // output count to the best_score.txt
+        output << count;
+    } else{
+        // output best_score to the best_score.txt (which is the same as before)
+        output << best_score;
+    }
+}
+
 void print_vector(vector<int> vector){
     for (int i = 0; i < vector.size(); i++){
         cout << vector[i] << "\t";
@@ -41,30 +68,7 @@ void play_game(){
         }
         
     }
-    // reads from best_score.txt
-    ifstream input("best_score.txt");
-    // checks if file opens
-    if(!input.is_open()){
-        cout << "Unable to read file\n";
-        return;
-    }
-    // sets variable and makes input number from best_score.txt
-    int best_score;
-    input >> best_score;
-    // write to best_score.txt
-    ofstream output("best_score.txt");
-    // checks if file opens
-    if(!output.is_open()){
-        cout << "Unable to read file\n";
-        return;
-    }
-    if(count < best_score){
-        // output count to the best_score.txt
-        output << count;
-    } else{
-        // output best_score to the best_score.txt (which is the same as before)
-        output << best_score;
-    }
+    save_score(count);
 
     print_vector(guesses);
 }
