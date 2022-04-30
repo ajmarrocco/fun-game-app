@@ -2,21 +2,21 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 // uses namespace std
 using namespace std;
 
-void print_array(int array[], int count){
-    for (int i = 0; i < count; i++){
-        cout << array[i] << "\t";
+void print_vector(vector<int> vector){
+    for (int i = 0; i < vector.size(); i++){
+        cout << vector[i] << "\t";
     }
     cout << "\n";
 }
 
 void play_game(){
     // creates array for guesses
-    int guesses[11];
-    int guess_count = 0;
+    vector <int> guesses;
     // random number between 1 and 10
     int random = rand() % 11;
     // cout << random << endl;
@@ -24,8 +24,8 @@ void play_game(){
     while(true){
         int guess;
         cin >> guess;
-        // sets guess to index zero and increments value
-        guesses[guess_count++] = guess;
+        // adds value of guess to the array guesses
+        guesses.push_back(guess);
 
         if(guess == random){
             cout << "You win!" << endl;
@@ -37,7 +37,7 @@ void play_game(){
         }
         
     }
-    print_array(guesses, guess_count);
+    print_vector(guesses);
 }
 
 int main() {
