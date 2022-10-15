@@ -48,9 +48,9 @@ void play_game(){
 
     int count = 0;
     // random number between 1 and 10
-    int random = rand() % 11;
+    int random = rand() % 20;
     // cout << random << endl;
-    cout << "Guess a number: ";
+    cout << "Guess a number between 1 and 20: ";
     while(true){
         int guess;
         cin >> guess;
